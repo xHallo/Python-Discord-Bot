@@ -7,6 +7,7 @@ import os
 import asyncio
 import urllib.request
 import re
+import ffmpeg
 
 def url_fetcher(key):
     if "://" in key:
@@ -19,10 +20,6 @@ def url_fetcher(key):
         url = ("https://www.youtube.com/watch?v=" + video_ids[0])
         return url
 
-
-intents = discord.Intents().all()
-client = discord.Client(intents=intents)
-bot = commands.Bot(command_prefix='!',intents=intents)
 yt_dlp.utils.bug_reports_message = lambda: ''
 
 ytdl_format_options = {
@@ -66,6 +63,9 @@ class musicCommands(commands.Cog, name="Music"):
     def __init__(self, bot):
         self.bot = bot
 
+    @commands.command()
+    async def musictest(self,ctx):
+        await ctx.send("hello")
     @commands.command(name='join', help="Allows the commands to join the channel")
     async def join(self,ctx):
         if not ctx.message.author.voice:
@@ -91,8 +91,8 @@ class musicCommands(commands.Cog, name="Music"):
         voice_channel = server.voice_client
 
         async with ctx.typing():
-            filename = await YTDLSource.from_url(url_fetcher(url),loop=bot.loop)
-            voice_channel.play(discord.FFmpegPCMAudio(executable=ffmpeg_exe, source=filename))
+            filename = await YTDLSource.from_url(url_fetcher(url),loop=None)
+            voice_channel.play(discord.FFmpegPCMAudio(executable=ffmpeg, source=filename)),
         await ctx.send("Song request received, playing now.")
         #except:
             #await ctx.send("Bot is not connected")

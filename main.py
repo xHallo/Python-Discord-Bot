@@ -18,25 +18,12 @@ bot = commands.Bot(command_prefix = commandPrefix, intents = intents)
 
 bot.remove_command('help')
 
-extensions = []
-
-async def load_extensions():
-    for filename in os.listdir("./cogs"):
-       if filename.endswith(".py"):
-            await extensions.append("cogs." + filename[:-3])
-            await bot.load_extension(f'cogs.{filename[:-3]}')
-            await print(extensions)
-
-
-
-
 @bot.event
 async def on_ready():
     print('Logged on!')
     extensions = ["cogs.help", "cogs.management", "cogs.game", "cogs.greetings"]
     for extension in extensions:
         await bot.load_extension(extension)
-        # await bot.load_extension("cogs.management")
 
 @bot.command(name="ping", aliases=["latency"])
 async def ping(ctx):

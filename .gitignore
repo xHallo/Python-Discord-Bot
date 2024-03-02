@@ -1,0 +1,5 @@
+discord.log
+
+__pycache__
+*.pyc
+.vscode

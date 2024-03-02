@@ -21,7 +21,7 @@ bot.remove_command('help')
 @bot.event
 async def on_ready():
     print('Logged on!')
-    extensions = ["cogs.help", "cogs.management", "cogs.game", "cogs.greetings"]
+    extensions = ["cogs.help", "cogs.management", "cogs.game", "cogs.greetings", "cogs.music"]
     for extension in extensions:
         await bot.load_extension(extension)
 

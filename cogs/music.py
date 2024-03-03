@@ -9,6 +9,8 @@ import urllib.request
 import re
 import ffmpeg
 
+#if link is a direct link to video, return url. But if name of video is inputted, create link by searching for video on youtube,
+#taking closest result and creating url with querystring.
 def url_fetcher(key):
     if "://" in key:
         return key
@@ -35,6 +37,7 @@ ytdl_format_options = {
     'source_address': '0.0.0.0' # bind to ipv4 since ipv6 addresses cause issues sometimes
 }
 
+#novideo
 ffmpeg_options = {
     'options': '-vn'
 }

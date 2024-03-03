@@ -24,6 +24,7 @@ def url_fetcher(key):
 
 yt_dlp.utils.bug_reports_message = lambda: ''
 
+#download audio file from youtube
 ytdl_format_options = {
     'format': 'bestaudio/best',
     'restrictfilenames': True,
@@ -43,6 +44,7 @@ ffmpeg_options = {
 }
 ytdl = yt_dlp.YoutubeDL(ytdl_format_options)
 
+#download audio file from youtube
 class YTDLSource(discord.PCMVolumeTransformer):
     def __init__(self, source, *, data, volume=0.5):
         super().__init__(source, volume)

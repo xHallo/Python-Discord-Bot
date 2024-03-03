@@ -94,7 +94,7 @@ class musicCommands(commands.Cog, name="Music"):
         voice_channel = server.voice_client
 
         async with ctx.typing():
-            filename = await YTDLSource.from_url(url_fetcher(url),loop=None)
+            filename = await YTDLSource.from_url(url_fetcher(url),loop=self.bot.loop)
             voice_channel.play(discord.FFmpegPCMAudio(executable=ffmpeg, source=filename)),
         await ctx.send("Song request received, playing now.")
         #except:

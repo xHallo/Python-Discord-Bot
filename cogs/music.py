@@ -90,7 +90,7 @@ class musicCommands(commands.Cog, name="Music"):
 
             async with ctx.typing():
                 filename = await YTDLSource.from_url(url_fetcher(url),loop=self.bot.loop)
-                voice_channel.play(discord.FFmpegPCMAudio(source=filename, executable = "D:\\Cui Tao Programming\\ffmpeg\\bin\\ffmpeg")),
+                voice_channel.play(discord.FFmpegPCMAudio(source=filename, executable = "D:\\?\\?\\bin\\ffmpeg")),
             await ctx.send("Song request received, playing now.")
            
     @commands.command(name='pause', help='This command pauses the song')

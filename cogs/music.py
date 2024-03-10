@@ -72,8 +72,9 @@ class musicCommands(commands.Cog, name="Music"):
         if not ctx.message.author.voice:
             await ctx.send("{}, You are not connected to a channel".format(ctx.message.author.name))
             return
-        elif mevoicetrue is not None:
-            await ctx.send("I am already in a channel, switching channels now!")
+        elif mevoicetrue:
+            await ctx.send("I am already in a channel, disconnect me first!")
+        else: 
             channel = ctx.message.author.voice.channel
         await channel.connect()
 
@@ -116,9 +117,10 @@ class musicCommands(commands.Cog, name="Music"):
         mevoicetrue = ctx.guild.me.voice
         voice_client = ctx.message.guild.voice_client
         if mevoicetrue == None:
-            await ctx.send("You are not in a voice channel")
-        elif mevoicetrue is not None:
+            await ctx.send("I am not in a voice channel")
+        elif mevoicetrue:
             await voice_client.disconnect()
+            await ctx.send("Thank you for using me. Good bye!")
         else:
             await ctx.send("Thank you for using me. Good bye!")
 

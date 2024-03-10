@@ -146,7 +146,7 @@ class managementCommands(commands.Cog, name="Management"):
             sent1 = await ctx.send(embed=muted_embed)
             await asyncio.sleep(int(seconds))
             await member.remove_roles(Muted)
-            unmute_embed = discord.Embed(title="Mute over!", description=f'{ctx.author.mention} muted to {member.mention} for {reason} is over after {time}')
+            unmute_embed = discord.Embed(title="Mute over!", description=f'{ctx.author.mention} mute to {member.mention} for {reason} is over after {time}')
             sent2 = await ctx.send(embed=unmute_embed)
             await asyncio.sleep(3)
             await sent1.delete()
